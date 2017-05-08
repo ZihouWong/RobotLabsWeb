@@ -10,7 +10,7 @@ _.merge(exports, {
 
 
 	//表名
-	globalId: 'User',
+	globalId: 'Test',
 
 	attributes: {
 	}

@@ -70,35 +70,28 @@ module.exports = {
 
 	//注册接口
 	register: function (req, res) {
-		if (req.body.commit == 1) {
-			User.create({
-				userId: req.body.userId,
-				delFlag: req.body.delFlag,
-				updateAt: req.body.updateAt,
-				createdAt: req.body.createdAt,
-				sex: req.body.sex,
-				email: req.body.email,
-				school: req.body.school,
-				major: req.body.major,
-				profile: req.body.profile,
-				userName:req.body.name,
-				bachelor: req.body.Bachelor,
-				datesOfAttendance: req.body.datesOfAttendance,
-				personalUrl: req.body.personalUrl,
-				imgUrl: req.body.imgUrl,
-				age: req.body.age,
-				commit: req.body.commit,
-				reset: req.body.reset
-			}).exec(function (err, myrecord) {
-				if (err) {
-					return res.badRequest("Registration failed.");
-				}
-				myrecord.save();
-				return res.ok("Registration successful.");
-			});
-		}
-		else if (req.body.reset == 1) {
-			return res.ok("Please reload the web.");
-		}
+		User.create({
+			userId: req.body.userId,
+			userName: req.body.userName,
+			sex: req.body.sex,
+			age: req.body.age,
+			email: req.body.email,
+			phone: req.body.phone,
+			personalUrl: req.body.personalUrl,
+			major: req.body.major,
+			school: req.body.school,
+			bachelor: req.body.bachelor,
+			profile: req.body.profile,
+			datesOfAttendance: req.body.datesOfAttendance,
+			imgUrl: req.body.imgUrl,
+			delFlag: req.body.delFlag,
+			updateAt: req.body.updateAt,
+			createdAt: req.body.createdAt
+		}).exec(function (err, myrecord) {
+			if (err) return res.badRequest(err.message + "Registration failed.");
+			return res.ok("Registration successful.");
+		});
+
+
 	}
 };

@@ -18,13 +18,6 @@ _.merge(exports, {
 			index: true
 		},
 
-		//0 不显示 1 显示
-		showUserId: {
-			type: 'integer',
-			notNull: true,
-			index: true
-		},
-
 		//成员名称
 		userName: {
 			type: 'string',
@@ -62,13 +55,6 @@ _.merge(exports, {
 			index: true
 		},
 
-		//学院专业
-		professionalSchool: {
-			type: 'string',
-			notNull: true,
-			index: true
-		},
-
 		//个人链接
 		personalUrl: {
 			type: 'string',
@@ -97,6 +83,14 @@ _.merge(exports, {
 			index: true
 		},
 
+		//手机号
+		phone: {
+			type: 'string',
+			notNull: true,
+			index: true
+		},
+
+
 		//所读学校
 		school: {
 			type: 'string',
@@ -109,20 +103,9 @@ _.merge(exports, {
 			type: 'string',
 			notNull: true,
 			index: true
-		},
-
-		//操作参数
-		submit: {
-			type: 'string',
-			notNull: true,
-			index: true
-		},
-		//操作参数
-		reset: {
-			type: 'string',
-			notNull: true,
-			index: true
 		}
+
+
 	}
 });
 
