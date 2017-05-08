@@ -8,7 +8,7 @@ module.exports = {
 	},
 
 	//获取栏目 标题 & 路径 接口
-	getIndexTitle: function (req, res) {
+	getIndexTitlePath: function (req, res) {
 		IndexTitle.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
@@ -21,8 +21,8 @@ module.exports = {
 	},
 
 	//获取机构 概况 & 路径 接口
-	getIntroductionNotDetailed: function (req, res) {
-		Introduction.find().exec(function (err, records) {
+	getInstitutionNotDetailedPath: function (req, res) {
+		Institution.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
 			var result = [];
@@ -34,7 +34,7 @@ module.exports = {
 	},
 
 	//获取通知公告信息 标题 & 日期 & 路径 接口
-	getNoticeTitle: function (req, res) {
+	getNoticeTitleDatePath: function (req, res) {
 		Notice.find().exec(function (err, records) {
 
 			if (err) return res.badRequest(err.message);
@@ -48,7 +48,7 @@ module.exports = {
 	},
 
 	//获取科学研究信息 标题 & 图片Url & 路径 接口
-	getExperimentTitle: function (req, res) {
+	getExperimentTitleIMgUrlPath: function (req, res) {
 		Experiment.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 

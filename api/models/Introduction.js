@@ -9,7 +9,7 @@ _.merge(exports, _basicModel);
 _.merge(exports, {
 
 	//表头
-	globalId:'Introduction',
+	globalId:'Institution',
 
 	attributes: {
 
@@ -28,7 +28,7 @@ _.merge(exports, {
 		},
 
 		//机构地址
-		introductionLocation: {
+		institutionLocation: {
 			type: 'string',
 			notNull: true,
 			index: true

@@ -11,9 +11,9 @@ module.exports = {
 
 
 	//获取机构 详细信息 & 地图链接 接口
-	getIntroductionDetails: function (req, res) {
+	getInstitutionInformation: function (req, res) {
 
-		Introduction.find().exec(function (err, records) {
+		Institution.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
 			var result = [];
@@ -25,8 +25,8 @@ module.exports = {
 	},
 
 
-	//获取所有 成员头像链接 & 名字接口 & 个人链接 & 简历 & 邮箱地址
-	getUserImgUrl: function (req, res) {
+	//获取所有 成员头像链接 & 名字接口 & 学历 & 个人链接 & 简历 & 邮箱地址
+	getUserInformation: function (req, res) {
 
 		User.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
@@ -43,7 +43,7 @@ module.exports = {
 	},
 
 	//获取项目研究 图片Url & 项目标题 & 路径
-	getExperiment: function (req, res) {
+	getExperimentInformation: function (req, res) {
 		Experiment.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
@@ -56,7 +56,7 @@ module.exports = {
 	},
 
 	//获取活动剪影 图片Url & 图片简介 & 日期
-	getActivities: function (req, res) {
+	getActivitiesInformaton: function (req, res) {
 		Activities.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
