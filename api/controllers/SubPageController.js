@@ -10,7 +10,7 @@ module.exports = {
 	},
 
 
-	//获取机构 详细信息 接口
+	//获取机构 详细信息 & 地图链接 接口
 	getIntroductionDetails: function (req, res) {
 
 		Introduction.find().exec(function (err, records) {
@@ -18,27 +18,14 @@ module.exports = {
 
 			var result = [];
 			_.map(records, function (record) {
-				result.push(record.details);
+				result.push({"details": record.details, "mapUrl": record.mapUrl});
 			});
-			return res.ok({"Details": result});
+			return res.ok({"result": result});
 		})
 	},
 
-	//获取机构 地图链接 接口
-	getIntroductionMapUrl: function (req, res) {
 
-		Introduction.find().exec(function (err, records) {
-			if (err) return res.badRequest(err.message);
-
-			var result = [];
-			_.map(records, function (record) {
-				result.push(record.mapUrl);
-			});
-			return res.ok({"MapUrl": records});
-		})
-	},
-
-	//获取所有成员头像链接接口
+	//获取所有 成员头像链接 & 名字接口 & 个人链接 & 简历 & 邮箱地址
 	getUserImgUrl: function (req, res) {
 
 		User.find().exec(function (err, records) {
@@ -46,146 +33,40 @@ module.exports = {
 
 			var result = [];
 			_.map(records, function (record) {
-				result.push(record.imgUrl);
+				result.push({"imgUrl": record.imgUrl, "userName": record.userName,
+							"bachelor": record.bachelor, "personalUrl": record.personalUrl,
+							"profile": record.profile ,"email": record.email
+				});
 			});
-			return res.ok({"ImgUrl": records});
+			return res.ok({"result": result});
 		})
 	},
 
-	//获取 所有成员名字 接口
-	getUserName: function (req, res) {
-
-		User.find().exec(function (err, records) {
+	//获取项目研究 图片Url & 项目标题 & 路径
+	getExperiment: function (req, res) {
+		Experiment.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
 			var result = [];
 			_.map(records, function (record) {
-				result.push(record.userName);
+				result.push({"imgUrl": record.imgUrl, "title": record.title, "path": record.path});
 			});
-			return res.ok({"userName": records});
+			return res.ok({"result": result});
 		})
 	},
 
-	//获取 所有成员学位 接口
-	getUserBachelor: function (req, res) {
-
-		User.find().exec(function (err, records) {
+	//获取活动剪影 图片Url & 图片简介 & 日期
+	getActivities: function (req, res) {
+		Activities.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
 
 			var result = [];
 			_.map(records, function (record) {
-				result.push(record.bachelor);
+				result.push({"imgUrl": record.imgUrl, "imgProfile": record.imgProfile, "Date": record.date});
 			});
-			return res.ok({"Bachelor": records});
+			return res.ok({"result": result});
 		})
-	},
-
-	//获取 所有成员个人链接 接口
-	getUserPersonalUrl: function (req, res) {
-
-		User.find().exec(function (err, records) {
-			if (err) return res.badRequest(err.message);
-
-			var result = [];
-			_.map(records, function (record) {
-				result.push(record.personalUrl);
-			});
-			return res.ok({"PersonalUrl": records});
-		})
-	},
-
-	//获取 所有成员个人简历 接口
-	getUserProfile: function (req, res) {
-
-		User.find().exec(function (err, records) {
-			if (err) return res.badRequest(err.message);
-
-			var result = [];
-			_.map(records, function (record) {
-				result.push(record.profile);
-			});
-			return res.ok({"PersonalProfile": records});
-		})
-	},
-
+	}
 
 
 };
-
-
-
-
-
-
-
-
-
-/*
- var result = [];
- //获取机构详细信息
- Introduction.find({attributes: 'Details'}).exec(function (err, records) {
-
- if (err) return res.badRequest(res.message);
-
- var index = 0;
- _.map(records, function (record) {
- result[index] = {attributes: record};
- index++;
- });
- return res.ok(result);
- });
-
- //获取机构地图Url
- Introduction.find({attributes: 'mapUrl'}).exec(function (err, records) {
-
- if (err) return res.badRequest(res.message);
-
- records.limit(4);
- var index = 0;
- _.map(records, function (record) {
- result[index] = {attributes: record};
- index++;
- });
- return res.ok(result);
- });
-
- Introduction.find({attributes: 'Details'}).exec(function (err, records) {
-
- if (err) return res.badRequest(res.message);
-
- records.limit(4);
- var index = 0;
- _.map(records, function (record) {
- result[index] = {attributes: record};
- index++;
- });
- return res.ok(result);
- });
-
-
-
-
-getIntroductionDetails: function(req, res) {
-	Introduction.find({attributes: 'Details'}).exec(function (err, records) {
-
-		if (err) return res.badRequest(res.message);
-
-		var num = 4;
-		records.limit(num);
-		var result = [];
-		var index = 0;
-		_.map(records, function (record) {
-			result[index] = {'attributes': record};
-			index++;
-		});
-		return res.ok(result);
-
-
-	});
-},
-
-//
-*/
-
-
-

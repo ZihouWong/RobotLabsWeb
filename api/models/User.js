@@ -82,41 +82,42 @@ _.merge(exports, {
 			notNull: true,
 			index: true
 		},
-		name: {
-			type: 'string',
-			notNull: true,
-			index: true
-		},
-		sex:{
-			type: 'string',
-			notNull: true,
-			index: true
-		},
+
+		//年龄
 		age: {
 			type: 'string',
 			notNull: true,
 			index: true
 		},
+
+		//邮箱地址
 		email: {
 			type: 'string',
 			notNull: true,
 			index: true
 		},
+
+		//所读学校
 		school: {
 			type: 'string',
 			notNull: true,
 			index: true
 		},
+
+		//专业
 		major: {
 			type: 'string',
 			notNull: true,
 			index: true
 		},
+
+		//操作参数
 		submit: {
 			type: 'string',
 			notNull: true,
 			index: true
 		},
+		//操作参数
 		reset: {
 			type: 'string',
 			notNull: true,
