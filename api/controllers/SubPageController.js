@@ -25,7 +25,7 @@ module.exports = {
 	},
 
 
-	//获取所有 成员头像链接 & 名字接口 & 学历 & 个人链接 & 简历 & 邮箱地址
+	//获取所有 成员头像链接 & 名字接口 & 学历 & 个人链接 & 简历 & 邮箱地址 接口
 	getUserInformation: function (req, res) {
 
 		User.find().exec(function (err, records) {
@@ -42,7 +42,7 @@ module.exports = {
 		})
 	},
 
-	//获取项目研究 图片Url & 项目标题 & 路径
+	//获取项目研究 图片Url & 项目标题 & 路径 接口
 	getExperimentInformation: function (req, res) {
 		Experiment.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
@@ -55,7 +55,7 @@ module.exports = {
 		})
 	},
 
-	//获取活动剪影 图片Url & 图片简介 & 日期
+	//获取活动剪影 图片Url & 图片简介 & 日期 接口
 	getActivitiesInformaton: function (req, res) {
 		Activities.find().exec(function (err, records) {
 			if (err) return res.badRequest(err.message);
@@ -68,31 +68,37 @@ module.exports = {
 		})
 	},
 
+	//注册接口
 	register: function (req, res) {
-		User.create({
-			userId: req.body.userId,
-			delFlag: req.body.delFlag,
-			updateAt: req.body.updateAt,
-			createdAt: req.body.createdAt,
-			sex: req.body.sex,
-			email: req.body.email,
-			school: eq.body.school,
-			major: req.body.major,
-			profile: req.body.profile,
-			userName:req.body.name,
-			bachelor: req.body.Bachelor,
-			datesOfAttendance: req.body.datesOfAttendance
-			personalUrl: req.body.personalUrl,
-			imgUrl: req.body.imgUrl,
-			age: req.body.age,
-			commit: req.body.commit,
-			reset: req.body.reset
-		}).exec(function (err, finn) {
-			if (err) {
-				return res.serverError(err);
-			}
-			return res.ok();
-		});
+		if (req.body.commit == 1) {
+			User.create({
+				userId: req.body.userId,
+				delFlag: req.body.delFlag,
+				updateAt: req.body.updateAt,
+				createdAt: req.body.createdAt,
+				sex: req.body.sex,
+				email: req.body.email,
+				school: req.body.school,
+				major: req.body.major,
+				profile: req.body.profile,
+				userName:req.body.name,
+				bachelor: req.body.Bachelor,
+				datesOfAttendance: req.body.datesOfAttendance,
+				personalUrl: req.body.personalUrl,
+				imgUrl: req.body.imgUrl,
+				age: req.body.age,
+				commit: req.body.commit,
+				reset: req.body.reset
+			}).exec(function (err, myrecord) {
+				if (err) {
+					return res.badRequest("Registration failed.");
+				}
+				myrecord.save();
+				return res.ok("Registration successful.");
+			});
+		}
+		else if (req.body.reset == 1) {
+			return res.ok("Please reload the web.");
+		}
 	}
-
 };
