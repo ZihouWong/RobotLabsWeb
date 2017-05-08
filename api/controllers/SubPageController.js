@@ -66,7 +66,33 @@ module.exports = {
 			});
 			return res.ok({"result": result});
 		})
-	}
+	},
 
+	register: function (req, res) {
+		User.create({
+			userId: req.body.userId,
+			delFlag: req.body.delFlag,
+			updateAt: req.body.updateAt,
+			createdAt: req.body.createdAt,
+			sex: req.body.sex,
+			email: req.body.email,
+			school: eq.body.school,
+			major: req.body.major,
+			profile: req.body.profile,
+			userName:req.body.name,
+			bachelor: req.body.Bachelor,
+			datesOfAttendance: req.body.datesOfAttendance
+			personalUrl: req.body.personalUrl,
+			imgUrl: req.body.imgUrl,
+			age: req.body.age,
+			commit: req.body.commit,
+			reset: req.body.reset
+		}).exec(function (err, finn) {
+			if (err) {
+				return res.serverError(err);
+			}
+			return res.ok();
+		});
+	}
 
 };
