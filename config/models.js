@@ -11,6 +11,11 @@
 
 module.exports.models = {
 
+	models: {
+		connections: 'localmysql',
+		mirgate: 'alter'
+	}
+
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *
