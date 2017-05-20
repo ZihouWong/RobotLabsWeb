@@ -13,7 +13,7 @@ module.exports.models = {
 
 
 	connections: 'localmysql',
-	mirgate: 'alter'
+	migrate: 'alter'
 
 
   /***************************************************************************
