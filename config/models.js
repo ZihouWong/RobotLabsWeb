@@ -11,10 +11,10 @@
 
 module.exports.models = {
 
-	models: {
-		connections: 'localmysql',
-		mirgate: 'alter'
-	}
+
+	connections: 'localmysql',
+	mirgate: 'alter'
+
 
   /***************************************************************************
   *                                                                          *
